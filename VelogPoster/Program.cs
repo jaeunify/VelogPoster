@@ -1,4 +1,5 @@
 ﻿using Microsoft.Playwright;
+namespace VelogPoster;
 
 class Program
 {
@@ -24,5 +25,9 @@ class Program
 
         // 1. Velog 로그인
         await page.GotoAsync("https://velog.io");
+        await page.SelectAndClickAsync("로그인", 1);
+        await page.ClickAsync("a[href*='auth/v3/social/redirect/google']");
+        await page.FillAsync("input[name=identifier]", email);
+        await page.Keyboard.PressAsync("Enter");
     }
 }
