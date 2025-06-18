@@ -14,7 +14,7 @@ public class InputWaiter
         listener.Prefixes.Add($"http://+:{port}/");
         listener.Start();
 
-        Console.WriteLine($"📡 HTTP 입력 대기 중... http://+:{port}/");
+        Console.WriteLine($"HTTP 입력 대기 중... http://+:{port}/");
         Console.WriteLine("POST / with JSON body: { \"title\": \"...\", \"content\": \"...\" }");
 
         var context = await listener.GetContextAsync();

@@ -27,13 +27,14 @@ public static class VelogPoster
         await page.GotoAsync("https://velog.io/write");
 
 // 3. 제목 + 본문 작성
-        await page.Locator("textarea[placeholder='제목을 입력하세요']").FillAsync("Ollama 자동 포스트");
+        await page.Locator("textarea[placeholder='제목을 입력하세요']").FillAsync(title);
         await page.Keyboard.PressAsync("Tab"); // CodeMirror로 포커스 이동
-        await page.Keyboard.TypeAsync("## 자동 작성된 요약\n\n이 글은 Ollama와 n8n으로 생성되었습니다.");
+        await page.Keyboard.TypeAsync(content);
 
 // 4. 임시저장 하기
         await page.ClickAsync("text=임시저장");
-        Console.WriteLine("✅ Velog에 포스트 임시저장 완료!");
+        Console.WriteLine("Velog에 포스트 임시저장 완료!");
+        await page.WaitForTimeoutAsync(2000); // 2초 대기
         await browser.CloseAsync();
     }
 }
