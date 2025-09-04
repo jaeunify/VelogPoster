@@ -8,7 +8,7 @@ public class InputWaiter
 {
     public async Task<(string Title, string Content)> GetInputAsync()
     {
-        const int port = 51205;
+        const int port = 5182;
 
         using var listener = new HttpListener();
         listener.Prefixes.Add($"http://+:{port}/");
